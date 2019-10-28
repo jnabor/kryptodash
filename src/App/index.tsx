@@ -3,6 +3,7 @@ import './App.css'
 import WelcomeMessage from './WelcomeMessage'
 import AppLayout from './AppLayout'
 import AppBar from './AppBar'
+import { AppProvider } from './AppProvider'
 
 // import styled, { css } from 'styled-components'
 // interface ButtonProps {
@@ -25,13 +26,15 @@ import AppBar from './AppBar'
 const App: React.FC = () => {
   return (
     <AppLayout>
-      <AppBar />
-      <WelcomeMessage />
-      {
-        // <Button> Hello </Button>
-        // <Button primary> Hello </Button>
-        // <TomatoButton> Hello </TomatoButton>
-      }
+      <AppProvider>
+        <AppBar />
+        <WelcomeMessage />
+        {
+          // <Button> Hello </Button>
+          // <Button primary> Hello </Button>
+          // <TomatoButton> Hello </TomatoButton>
+        }
+      </AppProvider>
     </AppLayout>
   )
 }

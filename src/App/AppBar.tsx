@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { appContext } from './AppProvider'
 
 const Bar = styled.div`
   display: grid;
@@ -32,8 +33,17 @@ interface ControlButtonProps {
 }
 
 const ControlButton: React.SFC<ControlButtonProps> = props => {
-  const name = toProperCase(props.name)
-  return <ControlButtonElem active={props.active}>{name}</ControlButtonElem>
+  return (
+    <appContext.Consumer>
+      {({ page, setPage }) => (
+        <ControlButtonElem
+          active={page === props.name}
+          onClick={() => setPage(props.name)}>
+          {toProperCase(props.name)}
+        </ControlButtonElem>
+      )}
+    </appContext.Consumer>
+  )
 }
 
 export interface AppBarProps {}

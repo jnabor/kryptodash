@@ -2,11 +2,12 @@
 
 ## CryptoCurrency Dashboard
 
-## tech Stack
+## tech stack
 
-react
-styled-components
+react<br />
+styled-components<br />
 
+<br />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
