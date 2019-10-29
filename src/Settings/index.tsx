@@ -1,15 +1,18 @@
 import React from 'react'
 import WelcomeMessage from './WelcomeMessage'
 import ConfirmButton from './ConfirmButton'
+import Page from '../Shared/Page'
+import CoinGrid from '../Settings/CoinGrid'
 
 export interface SettingsProps {}
 
 const Settings: React.SFC<SettingsProps> = () => {
   return (
-    <div>
+    <Page name='settings'>
       <WelcomeMessage />
       <ConfirmButton />
-    </div>
+      <CoinGrid />
+    </Page>
   )
 }
 

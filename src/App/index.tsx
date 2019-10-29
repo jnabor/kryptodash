@@ -1,9 +1,10 @@
 import React from 'react'
 import './App.css'
-import WelcomeMessage from '../Settings'
+import Settings from '../Settings'
 import AppLayout from './AppLayout'
 import AppBar from './AppBar'
 import { AppProvider } from './AppProvider'
+import Content from '../Shared/Content'
 
 // import styled, { css } from 'styled-components'
 // interface ButtonProps {
@@ -28,12 +29,9 @@ const App: React.FC = () => {
     <AppLayout>
       <AppProvider>
         <AppBar />
-        <WelcomeMessage />
-        {
-          // <Button> Hello </Button>
-          // <Button primary> Hello </Button>
-          // <TomatoButton> Hello </TomatoButton>
-        }
+        <Content>
+          <Settings />
+        </Content>
       </AppProvider>
     </AppLayout>
   )

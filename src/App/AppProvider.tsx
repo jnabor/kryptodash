@@ -1,9 +1,12 @@
 import React from 'react'
 
+const cc = require('cryptocompare')
+
 export interface AppProviderProps {}
 
 export interface AppProviderState {
   page: string
+  coinList?: any
   firstVisit?: boolean
   confirmFavorites?(): void
   setPage(page: string): void
@@ -28,6 +31,16 @@ export class AppProvider extends React.Component<
       setPage: this.setPage,
       confirmFavorites: this.confirmFavorites
     }
+  }
+
+  componentDidMount = () => {
+    this.fetchCoins()
+  }
+
+  fetchCoins = async () => {
+    let coinList = (await cc.coinList()).Data
+    console.log(coinList)
+    this.setState({ coinList })
   }
 
   confirmFavorites = () => {
