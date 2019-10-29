@@ -4,12 +4,16 @@ export interface AppProviderProps {}
 
 export interface AppProviderState {
   page: string
+  firstVisit?: boolean
+  confirmFavorites?(): void
   setPage(page: string): void
 }
 
 export const appContext = React.createContext<AppProviderState>({
-  page: 'settings',
-  setPage: (page: string) => {}
+  page: '',
+  confirmFavorites: () => {},
+  firstVisit: true,
+  setPage: () => {}
 })
 
 export class AppProvider extends React.Component<
@@ -18,7 +22,25 @@ export class AppProvider extends React.Component<
 > {
   constructor(props: AppProviderProps) {
     super(props)
-    this.state = { page: 'settings', setPage: this.setPage }
+    this.state = {
+      page: 'dashboard',
+      ...this.savedSettings(),
+      setPage: this.setPage,
+      confirmFavorites: this.confirmFavorites
+    }
+  }
+
+  confirmFavorites = () => {
+    this.setState({ firstVisit: false, page: 'dashboard' })
+    localStorage.setItem('kryptoDash', JSON.stringify({ test: 'Hello' }))
+  }
+
+  savedSettings = () => {
+    const data = JSON.parse(String(localStorage.getItem('kryptoDash')))
+    if (!data) {
+      return { page: 'settings', firstVisit: true }
+    }
+    return {}
   }
 
   setPage = (page: string) => {
