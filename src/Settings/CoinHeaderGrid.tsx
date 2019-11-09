@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { DeletableTile } from '../Shared/Tile'
 
 export const CoinHeaderGridStyled = styled.div`
   display: grid;
@@ -9,17 +10,30 @@ export const CoinHeaderGridStyled = styled.div`
 export const CoinSymbol = styled.div`
   justify-self: right;
 `
+export const DeleteIcon = styled.div`
+  justify-self: right;
+  display: none;
+  ${DeletableTile}: hover & {
+    display: block;
+    color: red;
+  }
+`
 
 export interface CoinHeaderGridProps {
   name: string
   symbol: string
+  topSection: boolean
 }
 
 const CoinHeaderGrid: React.SFC<CoinHeaderGridProps> = props => {
   return (
     <CoinHeaderGridStyled>
       <div>{props.name}</div>
-      <CoinSymbol>{props.symbol}</CoinSymbol>
+      {props.topSection ? (
+        <DeleteIcon> X </DeleteIcon>
+      ) : (
+        <CoinSymbol>{props.symbol}</CoinSymbol>
+      )}
     </CoinHeaderGridStyled>
   )
 }

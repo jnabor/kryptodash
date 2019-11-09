@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import CoinTile from './CoinTile'
 import { appContext } from '../App/AppProvider'
-import { SelectableTile } from '../Shared/Tile'
 
 export const CoinGridStyled = styled.div`
   display: grid;
@@ -11,20 +10,28 @@ export const CoinGridStyled = styled.div`
   margin-top: 40px;
 `
 
-export interface CoinGridProps {}
-
-function getCoinsToDisplay(coinList: any): string[] {
-  return Object.keys(coinList).slice(0, 100)
+export interface CoinGridProps {
+  topSection?: boolean
 }
 
-const CoinGrid: React.SFC<CoinGridProps> = () => {
+function getCoinsToDisplay(
+  coinList: any,
+  topSection: boolean,
+  favorites: string[]
+): string[] {
+  return topSection ? favorites : Object.keys(coinList).slice(0, 100)
+}
+
+const CoinGrid: React.SFC<CoinGridProps> = props => {
   return (
     <appContext.Consumer>
-      {({ coinList }) => (
+      {({ coinList, favorites }) => (
         <CoinGridStyled>
-          {getCoinsToDisplay(coinList).map(coinKey => (
-            <CoinTile coinKey={coinKey} />
-          ))}
+          {getCoinsToDisplay(coinList, !!props.topSection, favorites).map(
+            coinKey => (
+              <CoinTile topSection={!!props.topSection} coinKey={coinKey} />
+            )
+          )}
         </CoinGridStyled>
       )}
     </appContext.Consumer>
