@@ -8,6 +8,7 @@ export interface AppProviderProps {}
 export interface AppProviderState {
   page: string
   favorites: string[]
+  prices: any[]
   filteredCoins: string[]
   coinList?: any
   firstVisit?: boolean
@@ -22,6 +23,7 @@ export interface AppProviderState {
 export const appContext = React.createContext<AppProviderState>({
   page: '',
   favorites: [],
+  prices: [],
   filteredCoins: [],
   confirmFavorites: () => {},
   firstVisit: false,
@@ -42,7 +44,8 @@ export class AppProvider extends React.Component<
     super(props)
     this.state = {
       page: 'dashboard',
-      favorites: ['BTC', 'ETH'],
+      favorites: [],
+      prices: [],
       filteredCoins: [],
       ...this.savedSettings(),
       confirmFavorites: this.confirmFavorites,
@@ -56,6 +59,7 @@ export class AppProvider extends React.Component<
 
   componentDidMount = () => {
     this.fetchCoins()
+    this.fetchPrices()
   }
 
   addCoin = (key: string) => {
@@ -80,8 +84,32 @@ export class AppProvider extends React.Component<
     this.setState({ coinList })
   }
 
+  fetchPrices = async () => {
+    if (this.state.firstVisit) return
+
+    let prices = await this.prices()
+    // filter empty price objects
+    prices = prices.filter(price => Object.keys(price).length)
+    console.log('prices', prices)
+    this.setState({ prices })
+  }
+
+  prices = async () => {
+    let returnData = []
+    for (let i = 0; i < this.state.favorites.length; i++) {
+      try {
+        let priceData = await cc.priceFull(this.state.favorites[i], 'USD')
+        returnData.push(priceData)
+      } catch (e) {
+        console.warn('Fetch price error: ', e)
+      }
+    }
+    return returnData
+  }
   confirmFavorites = () => {
-    this.setState({ firstVisit: false, page: 'dashboard' })
+    this.setState({ firstVisit: false, page: 'dashboard' }, () => {
+      this.fetchPrices()
+    })
     localStorage.setItem(
       'kryptoDash',
       JSON.stringify({ favorites: this.state.favorites })

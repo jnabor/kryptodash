@@ -39,7 +39,11 @@ const CoinGrid: React.SFC<CoinGridProps> = props => {
             favorites,
             filteredCoins
           ).map(coinKey => (
-            <CoinTile topSection={!!props.topSection} coinKey={coinKey} />
+            <CoinTile
+              key={coinKey}
+              topSection={!!props.topSection}
+              coinKey={coinKey}
+            />
           ))}
         </CoinGridStyled>
       )}
