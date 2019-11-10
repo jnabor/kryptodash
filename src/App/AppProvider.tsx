@@ -8,6 +8,7 @@ export interface AppProviderProps {}
 export interface AppProviderState {
   page: string
   favorites: string[]
+  filteredCoins: string[]
   coinList?: any
   firstVisit?: boolean
   confirmFavorites?(): void
@@ -15,17 +16,20 @@ export interface AppProviderState {
   addCoin(key: string): void
   removeCoin(key: string): void
   isInFavorites(key: string): boolean
+  setFilteredCoins(filteredCoins: string[]): void
 }
 
 export const appContext = React.createContext<AppProviderState>({
   page: '',
   favorites: [],
+  filteredCoins: [],
   confirmFavorites: () => {},
   firstVisit: false,
   setPage: () => {},
   addCoin: () => {},
   removeCoin: () => {},
-  isInFavorites: () => false
+  isInFavorites: () => false,
+  setFilteredCoins: () => {}
 })
 
 const MAX_FAVORITES = 10
@@ -39,12 +43,14 @@ export class AppProvider extends React.Component<
     this.state = {
       page: 'dashboard',
       favorites: ['BTC', 'ETH'],
+      filteredCoins: [],
       ...this.savedSettings(),
       confirmFavorites: this.confirmFavorites,
       setPage: this.setPage,
       addCoin: this.addCoin,
       removeCoin: this.removeCoin,
-      isInFavorites: this.isInFavorites
+      isInFavorites: this.isInFavorites,
+      setFilteredCoins: this.setFilteredCoins
     }
   }
 
@@ -98,6 +104,9 @@ export class AppProvider extends React.Component<
   setPage = (page: string) => {
     this.setState({ page })
   }
+
+  setFilteredCoins = (filteredCoins: string[]) =>
+    this.setState({ filteredCoins: filteredCoins })
 
   render() {
     return (

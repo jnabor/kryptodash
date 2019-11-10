@@ -14,24 +14,33 @@ export interface CoinGridProps {
   topSection?: boolean
 }
 
+function getLowerSectionCoins(coinList: any, filteredCoins: string[]) {
+  if (Object.keys(filteredCoins).length > 0) return Object.keys(filteredCoins)
+  return Object.keys(coinList).slice(0, 100)
+}
+
 function getCoinsToDisplay(
   coinList: any,
   topSection: boolean,
-  favorites: string[]
+  favorites: string[],
+  filteredCoins: string[]
 ): string[] {
-  return topSection ? favorites : Object.keys(coinList).slice(0, 100)
+  return topSection ? favorites : getLowerSectionCoins(coinList, filteredCoins)
 }
 
 const CoinGrid: React.SFC<CoinGridProps> = props => {
   return (
     <appContext.Consumer>
-      {({ coinList, favorites }) => (
+      {({ coinList, favorites, filteredCoins }) => (
         <CoinGridStyled>
-          {getCoinsToDisplay(coinList, !!props.topSection, favorites).map(
-            coinKey => (
-              <CoinTile topSection={!!props.topSection} coinKey={coinKey} />
-            )
-          )}
+          {getCoinsToDisplay(
+            coinList,
+            !!props.topSection,
+            favorites,
+            filteredCoins
+          ).map(coinKey => (
+            <CoinTile topSection={!!props.topSection} coinKey={coinKey} />
+          ))}
         </CoinGridStyled>
       )}
     </appContext.Consumer>

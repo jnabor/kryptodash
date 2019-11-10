@@ -3,6 +3,7 @@ import WelcomeMessage from './WelcomeMessage'
 import ConfirmButton from './ConfirmButton'
 import Page from '../Shared/Page'
 import CoinGrid from '../Settings/CoinGrid'
+import Search from './Search'
 
 export interface SettingsProps {}
 
@@ -12,6 +13,7 @@ const Settings: React.SFC<SettingsProps> = () => {
       <WelcomeMessage />
       <CoinGrid topSection />
       <ConfirmButton />
+      <Search />
       <CoinGrid />
     </Page>
   )
