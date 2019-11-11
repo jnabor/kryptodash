@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACE,wBAAyB,CACzB,UAAY,CACZ,+BAAmC,CACnC,mBACF","file":"main.38640a21.chunk.css","sourcesContent":["body {\r\n  background-color: #010e2c;\r\n  color: white;\r\n  font-family: 'Do Hyeon', sans-serif;\r\n  letter-spacing: 0.1em;\r\n}\r\n"]}
