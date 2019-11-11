@@ -47,7 +47,7 @@ export interface AppBarProps {}
 const AppBar: React.SFC<AppBarProps> = () => {
   return (
     <Bar>
-      <div> Kryptodash </div>
+      <div> KRYPTODASH </div>
       <div></div>
       <ControlButton active name='dashboard' />
       <ControlButton name='settings' />

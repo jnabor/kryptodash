@@ -8,6 +8,7 @@ export interface AppProviderProps {}
 export interface AppProviderState {
   page: string
   favorites: string[]
+  currentFavorite: string
   prices: any[]
   filteredCoins: string[]
   coinList?: any
@@ -18,6 +19,7 @@ export interface AppProviderState {
   removeCoin(key: string): void
   isInFavorites(key: string): boolean
   setFilteredCoins(filteredCoins: string[]): void
+  setCurrentFavorite(sym: string): void
 }
 
 export const appContext = React.createContext<AppProviderState>({
@@ -25,13 +27,15 @@ export const appContext = React.createContext<AppProviderState>({
   favorites: [],
   prices: [],
   filteredCoins: [],
+  currentFavorite: '',
   confirmFavorites: () => {},
   firstVisit: false,
   setPage: () => {},
   addCoin: () => {},
   removeCoin: () => {},
   isInFavorites: () => false,
-  setFilteredCoins: () => {}
+  setFilteredCoins: () => {},
+  setCurrentFavorite: () => {}
 })
 
 const MAX_FAVORITES = 10
@@ -45,6 +49,7 @@ export class AppProvider extends React.Component<
     this.state = {
       page: 'dashboard',
       favorites: [],
+      currentFavorite: '',
       prices: [],
       filteredCoins: [],
       ...this.savedSettings(),
@@ -53,7 +58,8 @@ export class AppProvider extends React.Component<
       addCoin: this.addCoin,
       removeCoin: this.removeCoin,
       isInFavorites: this.isInFavorites,
-      setFilteredCoins: this.setFilteredCoins
+      setFilteredCoins: this.setFilteredCoins,
+      setCurrentFavorite: this.setCurrentFavorite
     }
   }
 
@@ -74,9 +80,6 @@ export class AppProvider extends React.Component<
     let favorites = [...this.state.favorites]
     this.setState({ favorites: _.pull(favorites, key) })
   }
-
-  isInFavorites = (key: string): boolean =>
-    _.includes(this.state.favorites, key)
 
   fetchCoins = async () => {
     let coinList = (await cc.coinList()).Data
@@ -106,13 +109,33 @@ export class AppProvider extends React.Component<
     }
     return returnData
   }
+
+  isInFavorites = (key: string): boolean =>
+    _.includes(this.state.favorites, key)
+
   confirmFavorites = () => {
-    this.setState({ firstVisit: false, page: 'dashboard' }, () => {
-      this.fetchPrices()
-    })
+    let currentFavorite = this.state.favorites[0] || ''
+    this.setState(
+      { firstVisit: false, page: 'dashboard', currentFavorite },
+      () => {
+        this.fetchPrices()
+      }
+    )
     localStorage.setItem(
       'kryptoDash',
-      JSON.stringify({ favorites: this.state.favorites })
+      JSON.stringify({ favorites: this.state.favorites, currentFavorite })
+    )
+  }
+
+  setCurrentFavorite = (sym: string) => {
+    console.log('setting current favorite...')
+    this.setState({ currentFavorite: sym })
+    localStorage.setItem(
+      'kryptoDash',
+      JSON.stringify({
+        ...JSON.parse(String(localStorage.getItem('kryptoDash'))),
+        currentFavorite: sym
+      })
     )
   }
 
@@ -123,10 +146,9 @@ export class AppProvider extends React.Component<
 
     if (!kryptoDashData) {
       return { page: 'settings', firstVisit: true }
-    } else {
-      let favorites = kryptoDashData.favorites
-      return { favorites }
     }
+    let { favorites, currentFavorite } = kryptoDashData
+    return { favorites, currentFavorite }
   }
 
   setPage = (page: string) => {

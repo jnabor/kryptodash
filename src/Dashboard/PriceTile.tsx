@@ -1,8 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { SelectableTile } from '../Shared/Tile'
-import { fontSize3, fontSizeBig } from '../Shared/Styles'
+import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles'
 import { CoinHeaderGridStyled } from '../Settings/CoinHeaderGrid'
+import { AppProvider, appContext } from '../App/AppProvider'
 
 const JustifyRight = styled.div`
   justify-self: right;
@@ -35,6 +36,7 @@ const numberFormat = (number: string) => {
 
 export interface PriceTileStyledProps {
   compact?: boolean
+  currentFavorite?: boolean
 }
 
 const PriceTileStyled = styled(SelectableTile)<PriceTileStyledProps>`
@@ -46,6 +48,13 @@ const PriceTileStyled = styled(SelectableTile)<PriceTileStyledProps>`
       grid-gap: 5px;
       grid-template-columns: repeat(3, 1fr);
       justify-items: right;
+    `}
+
+  ${props =>
+    props.currentFavorite &&
+    css`
+      ${greenBoxShadow}
+      pointer-events: none;
     `}
 `
 
@@ -66,11 +75,21 @@ const ChangePercent: React.SFC<ChangePercentProps> = ({ data }) => {
 interface PriceTileGridProps {
   sym: any
   data: any
+  currentFavorite: boolean
+  setCurrentFavorite: (event: any) => void
 }
 
-const PriceTileGrid: React.SFC<PriceTileGridProps> = ({ sym, data }) => {
+const PriceTileGrid: React.SFC<PriceTileGridProps> = ({
+  sym,
+  data,
+  currentFavorite,
+  setCurrentFavorite
+}) => {
+  console.log(currentFavorite)
   return (
-    <PriceTileStyled>
+    <PriceTileStyled
+      currentFavorite={currentFavorite}
+      onClick={setCurrentFavorite}>
       <CoinHeaderGridStyled>
         <JustifyLeft>{sym}</JustifyLeft>
         <ChangePercent data={data} />
@@ -83,11 +102,18 @@ const PriceTileGrid: React.SFC<PriceTileGridProps> = ({ sym, data }) => {
 export interface PriceTileCompactProps {
   sym: any
   data: any
+  currentFavorite: boolean
+  setCurrentFavorite: (event: any) => void
 }
 
-const PriceTileCompact: React.SFC<PriceTileCompactProps> = ({ sym, data }) => {
+const PriceTileCompact: React.SFC<PriceTileCompactProps> = ({
+  sym,
+  data,
+  currentFavorite,
+  setCurrentFavorite
+}) => {
   return (
-    <PriceTileStyled compact>
+    <PriceTileStyled compact onClick={setCurrentFavorite}>
       <JustifyLeft>{sym}</JustifyLeft>
       <ChangePercent data={data} />
       <div>${numberFormat(data.PRICE)}</div>
@@ -104,7 +130,18 @@ const PriceTile: React.SFC<PriceTileProps> = ({ price, index }) => {
   let sym = Object.keys(price)[0]
   let data = price[sym]['USD']
   let TileClass = index < 5 ? PriceTileGrid : PriceTileCompact
-  return <TileClass sym={sym} data={data} />
+  return (
+    <appContext.Consumer>
+      {({ currentFavorite, setCurrentFavorite }) => (
+        <TileClass
+          sym={sym}
+          data={data}
+          currentFavorite={currentFavorite === sym}
+          setCurrentFavorite={(event: any) => setCurrentFavorite(sym)}
+        />
+      )}
+    </appContext.Consumer>
+  )
 }
 
 export default PriceTile
