@@ -128,7 +128,6 @@ export class AppProvider extends React.Component<
   }
 
   setCurrentFavorite = (sym: string) => {
-    console.log('setting current favorite...')
     this.setState({ currentFavorite: sym })
     localStorage.setItem(
       'kryptoDash',

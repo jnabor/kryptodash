@@ -85,7 +85,6 @@ const PriceTileGrid: React.SFC<PriceTileGridProps> = ({
   currentFavorite,
   setCurrentFavorite
 }) => {
-  console.log(currentFavorite)
   return (
     <PriceTileStyled
       currentFavorite={currentFavorite}
@@ -113,7 +112,10 @@ const PriceTileCompact: React.SFC<PriceTileCompactProps> = ({
   setCurrentFavorite
 }) => {
   return (
-    <PriceTileStyled compact onClick={setCurrentFavorite}>
+    <PriceTileStyled
+      compact
+      currentFavorite={currentFavorite}
+      onClick={setCurrentFavorite}>
       <JustifyLeft>{sym}</JustifyLeft>
       <ChangePercent data={data} />
       <div>${numberFormat(data.PRICE)}</div>

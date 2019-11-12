@@ -1,16 +1,32 @@
 import React from 'react'
+import styled, { css } from 'styled-components'
+
+interface CoinImageStyledProps {
+  spotlight?: boolean
+}
+
+const CoinImageStyled = styled.img<CoinImageStyledProps>`
+  height: 50px;
+  ${props =>
+    props.spotlight &&
+    css`
+      height: 200px;
+      margin: auto;
+      display: block;
+    `}
+`
 
 export interface CoinImageProps {
   coin: any
-  style?: any
+  spotlight?: any
 }
 
-const CoinImage: React.SFC<CoinImageProps> = props => {
+const CoinImage: React.SFC<CoinImageProps> = ({ coin, spotlight }) => {
   return (
-    <img
-      alt={props.coin.CoinSymbol}
-      style={props.style || { height: '50px' }}
-      src={`http://cryptocompare.com/${props.coin.ImageUrl}`}
+    <CoinImageStyled
+      spotlight={spotlight}
+      alt={coin.CoinSymbol}
+      src={`http://cryptocompare.com/${coin.ImageUrl}`}
     />
   )
 }
