@@ -1,5 +1,37 @@
 {
-    "cSpell.words": [
-        "CHANGEPCT"
-    ]
+  "cSpell.words": [
+    "CHANGEPCT",
+    "Highcharts"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.renderWhitespace": "boundary",
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.iconTheme": "material-icon-theme",
+  "window.zoomLevel": 0,
+  "git.enableSmartCommit": true,
+  "explorer.confirmDragAndDrop": false,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "cSpell.userWords": [
+    "Deletable",
+    "Kryptodash",
+    "cryptocompare",
+    "krypto",
+    "minmax",
+    "sonabstudios",
+    "unmount"
+  ],
+  "editor.fontSize": 12,
+  "editor.formatOnPaste": true,
+  "typescript.format.enable": false,
+  "yaml.format.enable": false,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.format.semicolons": "remove",
+  "tsimporter.emitSemicolon": false
 }

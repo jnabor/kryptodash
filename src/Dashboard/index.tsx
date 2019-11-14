@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Page from '../Shared/Page'
 import PriceGrid from './PriceGrid'
 import CoinSpotlight from './CoinSpotlight'
-
+import PriceCharts from './PriceChart'
 const ChartGrid = styled.div`
   display: grid;
   margin-top: 20px;
@@ -19,7 +19,7 @@ const Settings: React.SFC<SettingsProps> = () => {
       <PriceGrid />
       <ChartGrid>
         <CoinSpotlight />
-        <div>Chart under development...</div>
+        <PriceCharts />
       </ChartGrid>
     </Page>
   )

@@ -5,6 +5,11 @@ import { DeletableTile } from '../Shared/Tile'
 export const CoinHeaderGridStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+`
+
+export const CoinName = styled.div`
+  margin-right: 10px;
 `
 
 export const CoinSymbol = styled.div`
@@ -28,7 +33,7 @@ export interface CoinHeaderGridProps {
 const CoinHeaderGrid: React.SFC<CoinHeaderGridProps> = props => {
   return (
     <CoinHeaderGridStyled>
-      <div>{props.name}</div>
+      <CoinName>{props.name}</CoinName>
       {props.topSection ? (
         <DeleteIcon> X </DeleteIcon>
       ) : (

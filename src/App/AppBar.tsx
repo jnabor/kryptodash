@@ -1,10 +1,15 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { appContext } from './AppProvider'
+import { fontSizeLogo } from '../Shared/Styles'
 
 const Bar = styled.div`
   display: grid;
-  grid-template-columns: 180px auto 100px 100px;
+  grid-template-columns: 200px auto 160px 160px;
+`
+
+const Brand = styled.div`
+  ${fontSizeLogo}
 `
 interface ControlButtonElemProps {
   active?: boolean
@@ -47,7 +52,7 @@ export interface AppBarProps {}
 const AppBar: React.SFC<AppBarProps> = () => {
   return (
     <Bar>
-      <div> KRYPTODASH </div>
+      <Brand> KRYPTODASH </Brand>
       <div></div>
       <ControlButton active name='dashboard' />
       <ControlButton name='settings' />

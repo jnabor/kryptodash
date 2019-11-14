@@ -6,8 +6,9 @@ import { fontSize1, greenBoxShadow, color3 } from '../Shared/Styles'
 const ConfirmButtonStyled = styled.div`
   margin: 20px;
   color: ${color3};
+  border-radius: 5px;
   ${fontSize1}
-  padding: 5px;
+  padding: 6px 12px;
   cursor: pointer;
   &:hover {
     ${greenBoxShadow}
