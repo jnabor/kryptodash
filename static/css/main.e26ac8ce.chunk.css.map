@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACE,wBAAyB,CACzB,UAAY,CACZ,4BAAgC,CAChC,mBACF","file":"main.e26ac8ce.chunk.css","sourcesContent":["body {\r\n  background-color: #090f1d;\r\n  color: white;\r\n  font-family: 'Wallpoet', cursive;\r\n  letter-spacing: 0.1em;\r\n}\r\n"]}
