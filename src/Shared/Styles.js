@@ -13,10 +13,10 @@ export const subtleBoxShadow = `box-shadow: 0px 0px 5px 1px #121d5b`
 export const greenBoxShadow = `box-shadow: 0px 0px 4px 2px #5fff17`
 export const redBoxShadow = `box-shadow: 0px 0px 2px 2px #e41111`
 
-export const fontSizeLogo = 'font-size: 2em'
-export const fontSizeBig = 'font-size: 1.5em'
-export const fontSize1 = 'font-size: 1.25em;'
-export const fontSize2 = 'font-size: 1.0em'
-export const fontSize3 = 'font-size: .75em'
+export const fontSizeLogo = 'font-size: 1.4em'
+export const fontSizeBig = 'font-size: 1.2em'
+export const fontSize1 = 'font-size: 1.0em;'
+export const fontSize2 = 'font-size: 0.9em'
+export const fontSize3 = 'font-size: 0.75em'
 
 export const textAlignCenter = 'text-align: center;'

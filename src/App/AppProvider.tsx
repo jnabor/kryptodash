@@ -48,8 +48,19 @@ export class AppProvider extends React.Component<
     super(props)
     this.state = {
       page: 'dashboard',
-      favorites: ['BTC', 'LTC', 'ETH'],
-      currentFavorite: '',
+      favorites: [
+        'BTC',
+        'LTC',
+        'ETH',
+        'ZEC',
+        'DASH',
+        'XRP',
+        'XMR',
+        'BCH',
+        'NEO',
+        'EOS'
+      ],
+      currentFavorite: 'BTC',
       prices: [],
       filteredCoins: [],
       ...this.savedSettings(),

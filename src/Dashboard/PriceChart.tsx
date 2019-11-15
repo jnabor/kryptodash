@@ -1,8 +1,12 @@
 import React from 'react'
 import highchartsConfig from './HighchartsConfig'
+import highchartsTheme from './HighchartsTheme'
+
 import { Tile } from '../Shared/Tile'
 import { appContext } from '../App/AppProvider'
 import ReactHighcharts from 'react-highcharts'
+
+ReactHighcharts.Highcharts.setOptions(highchartsTheme)
 
 export interface PriceChartProps {}
 
