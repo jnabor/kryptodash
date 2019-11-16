@@ -13,6 +13,7 @@ export interface AppProviderState {
   currentFavorite: string
   historical: any[]
   prices: any[]
+  timeInterval: string
   filteredCoins: string[]
   coinList?: any
   firstVisit?: boolean
@@ -23,12 +24,14 @@ export interface AppProviderState {
   isInFavorites(key: string): boolean
   setFilteredCoins(filteredCoins: string[]): void
   setCurrentFavorite(sym: string): void
+  changeChartSelect(value: string): void
 }
 
 export const appContext = React.createContext<AppProviderState>({
   page: '',
   favorites: [],
   prices: [],
+  timeInterval: 'months',
   filteredCoins: [],
   currentFavorite: '',
   historical: [],
@@ -39,7 +42,8 @@ export const appContext = React.createContext<AppProviderState>({
   removeCoin: () => {},
   isInFavorites: () => false,
   setFilteredCoins: () => {},
-  setCurrentFavorite: () => {}
+  setCurrentFavorite: () => {},
+  changeChartSelect: () => {}
 })
 
 const MAX_FAVORITES = 10
@@ -68,6 +72,7 @@ export class AppProvider extends React.Component<
       currentFavorite: '',
       historical: [],
       prices: [],
+      timeInterval: 'months',
       filteredCoins: [],
       ...this.savedSettings(),
       confirmFavorites: this.confirmFavorites,
@@ -76,7 +81,8 @@ export class AppProvider extends React.Component<
       removeCoin: this.removeCoin,
       isInFavorites: this.isInFavorites,
       setFilteredCoins: this.setFilteredCoins,
-      setCurrentFavorite: this.setCurrentFavorite
+      setCurrentFavorite: this.setCurrentFavorite,
+      changeChartSelect: this.changeChartSelect
     }
   }
 
@@ -123,7 +129,7 @@ export class AppProvider extends React.Component<
         name: this.state.currentFavorite,
         data: results.map((ticker, index) => [
           moment()
-            .subtract({ months: TIME_UNITS - index })
+            .subtract({ [this.state.timeInterval]: TIME_UNITS - index })
             .valueOf(),
           ticker.USD
         ])
@@ -140,7 +146,7 @@ export class AppProvider extends React.Component<
           this.state.currentFavorite,
           ['USD'],
           moment()
-            .subtract({ months: units })
+            .subtract({ [this.state.timeInterval]: units })
             .toDate()
         )
       )
@@ -217,6 +223,10 @@ export class AppProvider extends React.Component<
 
   setFilteredCoins = (filteredCoins: string[]) =>
     this.setState({ filteredCoins: filteredCoins })
+
+  changeChartSelect = (value: string) => {
+    this.setState({ timeInterval: value, historical: [] }, this.fetchHistorical)
+  }
 
   render() {
     return (

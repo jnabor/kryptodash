@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { SelectableTile } from '../Shared/Tile'
 import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles'
 import { CoinHeaderGridStyled } from '../Settings/CoinHeaderGrid'
-import { AppProvider, appContext } from '../App/AppProvider'
+import { appContext } from '../App/AppProvider'
 
 const JustifyRight = styled.div`
   justify-self: right;
@@ -139,7 +139,7 @@ const PriceTile: React.SFC<PriceTileProps> = ({ price, index }) => {
           sym={sym}
           data={data}
           currentFavorite={currentFavorite === sym}
-          setCurrentFavorite={(event: any) => setCurrentFavorite(sym)}
+          setCurrentFavorite={e => setCurrentFavorite(sym)}
         />
       )}
     </appContext.Consumer>
