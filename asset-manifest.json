@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/kryptodash/static/css/main.e26ac8ce.chunk.css",
-    "main.js": "/kryptodash/static/js/main.2a564cd4.chunk.js",
-    "main.js.map": "/kryptodash/static/js/main.2a564cd4.chunk.js.map",
+    "main.js": "/kryptodash/static/js/main.f51d967d.chunk.js",
+    "main.js.map": "/kryptodash/static/js/main.f51d967d.chunk.js.map",
     "runtime-main.js": "/kryptodash/static/js/runtime-main.25aed29c.js",
     "runtime-main.js.map": "/kryptodash/static/js/runtime-main.25aed29c.js.map",
-    "static/js/2.5eb6d17a.chunk.js": "/kryptodash/static/js/2.5eb6d17a.chunk.js",
-    "static/js/2.5eb6d17a.chunk.js.map": "/kryptodash/static/js/2.5eb6d17a.chunk.js.map",
+    "static/js/2.024bd352.chunk.js": "/kryptodash/static/js/2.024bd352.chunk.js",
+    "static/js/2.024bd352.chunk.js.map": "/kryptodash/static/js/2.024bd352.chunk.js.map",
     "index.html": "/kryptodash/index.html",
-    "precache-manifest.c87142882220c01198a93444962c8c6a.js": "/kryptodash/precache-manifest.c87142882220c01198a93444962c8c6a.js",
+    "precache-manifest.35ddb757c943ec3e85bf0e67869a390f.js": "/kryptodash/precache-manifest.35ddb757c943ec3e85bf0e67869a390f.js",
     "service-worker.js": "/kryptodash/service-worker.js",
     "static/css/main.e26ac8ce.chunk.css.map": "/kryptodash/static/css/main.e26ac8ce.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.25aed29c.js",
-    "static/js/2.5eb6d17a.chunk.js",
+    "static/js/2.024bd352.chunk.js",
     "static/css/main.e26ac8ce.chunk.css",
-    "static/js/main.2a564cd4.chunk.js"
+    "static/js/main.f51d967d.chunk.js"
   ]
 }
