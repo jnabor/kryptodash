@@ -1,6 +1,6 @@
 # KRYPTODASH
 
-## CryptoCurrency Dashboard
+## Cryptocurrency Dashboard
 
 ### Tech Stack
 
@@ -16,3 +16,5 @@
 - highcharts
 
 see demo: https://sonabstudios.github.io/kryptodash/
+
+![Preview](kryptodash.jpg)
