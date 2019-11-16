@@ -1,4 +1,4 @@
-# kryptodash
+# KRYPTODASH
 
 ## CryptoCurrency Dashboard
 
@@ -14,3 +14,5 @@
 - lodash
 - moment
 - highcharts
+
+see demo: https://sonabstudios.github.io/kryptodash/
