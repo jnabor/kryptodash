@@ -3,7 +3,7 @@ import _ from 'lodash'
 import moment from 'moment'
 
 const cc = require('cryptocompare')
-cc.setApiKey('3fa3f7ae843bccf4e23914c706651eee908667babd60604baa43f9c8dbed3e9c')
+//cc.setApiKey('<put your api key here>')
 
 export interface AppProviderProps {}
 

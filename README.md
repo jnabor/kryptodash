@@ -2,10 +2,15 @@
 
 ## CryptoCurrency Dashboard
 
-## Tech Stack
+### Tech Stack
 
-### react<br />
+- react
+- typescript
+- styled-components
+- cryptocompare
 
-### typescript<br />
+### other APIs / Libraries
 
-### styled-components<br />
+- lodash
+- moment
+- highcharts
