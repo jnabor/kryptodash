@@ -9,7 +9,7 @@ const WelcomeMessage: React.SFC<WelcomeMessageProps> = () => {
       {({ firstVisit }) =>
         firstVisit ? (
           <div>
-            Welcome to Kryptodash, please select your favorite coin to begin.
+            Welcome to Kryptodash, please select your favorite coins to begin.
           </div>
         ) : null
       }

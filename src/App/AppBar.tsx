@@ -13,6 +13,7 @@ const Brand = styled.div`
 `
 interface ControlButtonElemProps {
   active?: boolean
+  show?: boolean
 }
 
 const ControlButtonElem = styled.div<ControlButtonElemProps>`
@@ -21,6 +22,12 @@ const ControlButtonElem = styled.div<ControlButtonElemProps>`
     props.active &&
     css`
       text-shadow: 0 0 60px #03ff03;
+    `}
+  ${props =>
+    props.show &&
+    css`
+      color: grey;
+      pointer-events: none;
     `}
 `
 
@@ -36,10 +43,11 @@ interface ControlButtonProps {
 const ControlButton: React.SFC<ControlButtonProps> = props => {
   return (
     <appContext.Consumer>
-      {({ page, setPage }) => (
+      {({ firstVisit, page, setPage }) => (
         <ControlButtonElem
           active={page === props.name}
-          onClick={() => setPage(props.name)}>
+          onClick={() => setPage(props.name)}
+          show={firstVisit && props.name === 'dashboard'}>
           {toProperCase(props.name)}
         </ControlButtonElem>
       )}

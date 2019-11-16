@@ -13,9 +13,14 @@ export interface PriceChartProps {}
 const PriceChart: React.SFC<PriceChartProps> = () => {
   return (
     <appContext.Consumer>
-      {({}) => (
+      {({ historical }) => (
         <Tile>
-          <ReactHighcharts config={highchartsConfig()}></ReactHighcharts>
+          {historical ? (
+            <ReactHighcharts
+              config={highchartsConfig(historical)}></ReactHighcharts>
+          ) : (
+            <div> Loading Historical Data ...</div>
+          )}
         </Tile>
       )}
     </appContext.Consumer>
