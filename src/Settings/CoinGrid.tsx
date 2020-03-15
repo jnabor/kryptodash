@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import CoinTile from './CoinTile'
 import { appContext } from '../App/AppProvider'
+import Typography from '@material-ui/core/Typography'
 
 export const CoinGridStyled = styled.div`
   display: grid;

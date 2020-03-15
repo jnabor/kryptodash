@@ -1,34 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled, { css } from 'styled-components'
-import { appContext } from './AppProvider'
-import { fontSizeLogo } from '../Shared/Styles'
+import { appContext, AppProviderProps } from './AppProvider'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import SettingsIcon from '@material-ui/icons/Settings'
+import DashboardIcon from '@material-ui/icons/Dashboard'
+import Hidden from '@material-ui/core/Hidden'
+import IconButton from '@material-ui/core/IconButton'
 
 const Bar = styled.div`
   display: grid;
-  grid-template-columns: 200px auto 160px 160px;
+  grid-template-columns: 180px auto 350px;
+  justify-items: right;
 `
 
-const Brand = styled.div`
-  ${fontSizeLogo}
-`
 interface ControlButtonElemProps {
   active?: boolean
   show?: boolean
 }
 
-const ControlButtonElem = styled.div<ControlButtonElemProps>`
-  cursor: pointer;
-  ${props =>
-    props.active &&
-    css`
-      text-shadow: 0 0 60px #03ff03;
-    `}
-  ${props =>
-    props.show &&
-    css`
-      color: grey;
-      pointer-events: none;
-    `}
+const ControlButtonElem = styled(({ ...props }) => <Button {...props} />)<
+  ControlButtonElemProps
+>`
+  && {
+    cursor: pointer;
+    margin-left: 20px;
+    ${props => props.active && css``}
+    ${props => props.show && css``};
+  }
 `
 
 const toProperCase = (lower: string): string => {
@@ -41,17 +40,25 @@ interface ControlButtonProps {
 }
 
 const ControlButton: React.SFC<ControlButtonProps> = props => {
+  const context = useContext(appContext)
+
+  const variant = context.page === props.name ? 'contained' : 'outlined'
+
   return (
-    <appContext.Consumer>
-      {({ firstVisit, page, setPage }) => (
-        <ControlButtonElem
-          active={page === props.name}
-          onClick={() => setPage(props.name)}
-          show={firstVisit && props.name === 'dashboard'}>
-          {toProperCase(props.name)}
-        </ControlButtonElem>
-      )}
-    </appContext.Consumer>
+    <>
+      <ControlButtonElem
+        onClick={() => context.setPage(props.name)}
+        variant={variant}
+        color='primary'
+        size='large'>
+        {props.name === 'settings' ? <SettingsIcon /> : <DashboardIcon />}
+        <Hidden xsDown>
+          <div style={{ marginLeft: '5px' }}>
+            <Typography>{toProperCase(props.name)}</Typography>
+          </div>
+        </Hidden>
+      </ControlButtonElem>
+    </>
   )
 }
 
@@ -60,10 +67,14 @@ export interface AppBarProps {}
 const AppBar: React.SFC<AppBarProps> = () => {
   return (
     <Bar>
-      <Brand> KRYPTODASH </Brand>
+      <div>
+        <Typography variant='h4'> KRYPTODASH</Typography>
+      </div>
       <div></div>
-      <ControlButton active name='dashboard' />
-      <ControlButton name='settings' />
+      <div>
+        <ControlButton name='dashboard' />
+        <ControlButton name='settings' />
+      </div>
     </Bar>
   )
 }

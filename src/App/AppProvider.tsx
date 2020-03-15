@@ -46,7 +46,7 @@ export const appContext = React.createContext<AppProviderState>({
   changeChartSelect: () => {}
 })
 
-const MAX_FAVORITES = 10
+const MAX_FAVORITES = 12
 const TIME_UNITS = 10
 
 export class AppProvider extends React.Component<
@@ -56,18 +56,20 @@ export class AppProvider extends React.Component<
   constructor(props: AppProviderProps) {
     super(props)
     this.state = {
-      page: 'settings',
+      page: 'dashboard',
       favorites: [
         'BTC',
-        'LTC',
         'ETH',
-        'ZEC',
-        'DASH',
         'XRP',
-        'XMR',
+        'USDT',
         'BCH',
-        'NEO',
-        'EOS'
+        'LTC',
+        'BSV',
+        'EOS',
+        'BNB',
+        'XTZ',
+        'LEO',
+        'XLM'
       ],
       currentFavorite: '',
       historical: [],

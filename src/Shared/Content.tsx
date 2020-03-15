@@ -1,6 +1,7 @@
 import React from 'react'
 import { appContext } from '../App/AppProvider'
 import styled from 'styled-components'
+import Typography from '@material-ui/core/Typography'
 
 export const ContentStyled = styled.div`
   margin-top: 40px;
@@ -15,10 +16,18 @@ const Content: React.SFC<PageProps> = props => {
     <appContext.Consumer>
       {({ coinList, prices, firstVisit }) => {
         if (!coinList) {
-          return <ContentStyled> Loading Coins </ContentStyled>
+          return (
+            <ContentStyled>
+              <Typography variant='h6'> Loading Coins </Typography>
+            </ContentStyled>
+          )
         }
-        if (!firstVisit && !prices) {
-          return <ContentStyled> Loading Prices </ContentStyled>
+        if (!prices) {
+          return (
+            <ContentStyled>
+              <Typography variant='h6'> Loading Prices </Typography>{' '}
+            </ContentStyled>
+          )
         }
         return <ContentStyled>{props.children}</ContentStyled>
       }}

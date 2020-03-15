@@ -1,5 +1,6 @@
 import React from 'react'
 import { appContext } from '../App/AppProvider'
+import Typography from '@material-ui/core/Typography'
 
 export interface WelcomeMessageProps {}
 
@@ -8,10 +9,12 @@ const WelcomeMessage: React.SFC<WelcomeMessageProps> = () => {
     <appContext.Consumer>
       {({ firstVisit }) =>
         firstVisit ? (
-          <div>
-            Welcome to Kryptodash, please select your favorite coins to begin.
-          </div>
-        ) : null
+          <Typography variant='h6'>
+            Welcome to Kryptodash, please select your favorite coins!
+          </Typography>
+        ) : (
+          <Typography variant='h6'>Favorites</Typography>
+        )
       }
     </appContext.Consumer>
   )

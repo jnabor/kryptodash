@@ -4,6 +4,8 @@ import { SelectableTile, DisabledTile, DeletableTile } from '../Shared/Tile'
 import CoinHeaderGrid from './CoinHeaderGrid'
 import CoinImage from '../Shared/CoinImage'
 
+import Paper from '@material-ui/core/Paper'
+
 export interface CoinTileProps {
   coinKey: string
   topSection: boolean

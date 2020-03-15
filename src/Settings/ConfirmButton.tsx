@@ -2,18 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import { appContext } from '../App/AppProvider'
 import { fontSize1, greenBoxShadow, color3 } from '../Shared/Styles'
+import Button from '@material-ui/core/Button'
 
-const ConfirmButtonStyled = styled.div`
-  margin: 20px;
-  color: ${color3};
-  border-radius: 5px;
-  ${fontSize1}
-  padding: 6px 12px;
-  cursor: pointer;
-  &:hover {
-    ${greenBoxShadow}
+interface ConfirmButtonElemProps {}
+const ConfirmButtonElem = styled(({ ...props }) => <Button {...props} />)<
+  ConfirmButtonElemProps
+>`
+  && {
+    margin: 40px 20px;
+    cursor: pointer;
   }
 `
+
 export const CenterDiv = styled.div`
   display: grid;
   justify-content: center;
@@ -26,9 +26,13 @@ const ConfirmButton: React.SFC<ConfirmButtonProps> = () => {
     <appContext.Consumer>
       {({ confirmFavorites }) => (
         <CenterDiv>
-          <ConfirmButtonStyled onClick={confirmFavorites}>
+          <ConfirmButtonElem
+            variant='outlined'
+            size='large'
+            color='secondary'
+            onClick={confirmFavorites}>
             Confirm Favorites
-          </ConfirmButtonStyled>
+          </ConfirmButtonElem>
         </CenterDiv>
       )}
     </appContext.Consumer>

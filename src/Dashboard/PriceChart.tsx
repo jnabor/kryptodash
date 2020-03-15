@@ -25,7 +25,7 @@ const PriceChart: React.SFC<PriceChartProps> = () => {
             <option value='weeks'>Weeks</option>
             <option value='months'>Months</option>
           </ChartSelect>
-          {historical ? (
+          {historical.length ? (
             <ReactHighcharts
               config={highchartsConfig(historical)}></ReactHighcharts>
           ) : (

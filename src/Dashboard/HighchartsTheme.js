@@ -10,9 +10,9 @@ export default {
     '#1b2839'
   ],
   chart: {
-    backgroundColor: '#061a44',
+    backgroundColor: '#ffffff',
     className: 'dark-container',
-    plotBackgroundColor: '#061a44',
+    plotBackgroundColor: '#ffffff',
     plotBorderColor: '#CCCCCC',
     plotBorderWidth: 0
   },

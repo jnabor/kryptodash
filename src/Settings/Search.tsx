@@ -5,12 +5,16 @@ import { backgroundColor2, fontSize1 } from '../Shared/Styles'
 import _ from 'lodash'
 import fuzzy from 'fuzzy'
 
+import SearchBar from './SearchBar'
+
 export interface SearchProps {}
 
-const SearchGrid = styled.div`
+const CenterDiv = styled.div`
+  margin-top: 40px;
   display: grid;
-  grid-template-columns: 200px 1fr;
+  justify-content: center;
 `
+
 const SearchInput = styled.input`
   ${backgroundColor2}
   ${fontSize1}
@@ -19,7 +23,7 @@ const SearchInput = styled.input`
   border: 1px solid;
   height: 25px;
   color: #1163c9;
-  place-self: center left;
+  place-self: center center;
 `
 const handleFilter = _.debounce((inputValue, coinList, setFilteredCoins) => {
   // Get all coins symbols
@@ -58,12 +62,15 @@ const Search: React.SFC<SearchProps> = () => {
   return (
     <appContext.Consumer>
       {({ setFilteredCoins, coinList }) => (
-        <SearchGrid>
-          <p> Search All Coins </p>
-          <SearchInput
-            onKeyUp={e => filterCoins(e, setFilteredCoins, coinList)}
-          />
-        </SearchGrid>
+        <CenterDiv>
+          <div></div>
+          <div>
+            <SearchBar
+              search={e => filterCoins(e, setFilteredCoins, coinList)}
+            />
+          </div>
+          <div></div>
+        </CenterDiv>
       )}
     </appContext.Consumer>
   )

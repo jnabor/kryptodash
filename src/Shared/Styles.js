@@ -1,5 +1,5 @@
 export const color = '#061a44'
-export const color2 = '#010e2c'
+export const color2 = '#fff'
 export const color3 = '#42ff3a'
 
 export const lightBlueBackground = `background-color: ${color}`
