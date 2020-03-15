@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { DeletableTile } from '../Shared/Tile'
+import CloseIcon from '@material-ui/icons/Close'
 
 export const CoinHeaderGridStyled = styled.div`
   display: grid;
@@ -35,7 +36,9 @@ const CoinHeaderGrid: React.SFC<CoinHeaderGridProps> = props => {
     <CoinHeaderGridStyled>
       <CoinName>{props.name}</CoinName>
       {props.topSection ? (
-        <DeleteIcon> X </DeleteIcon>
+        <DeleteIcon>
+          <CloseIcon />
+        </DeleteIcon>
       ) : (
         <CoinSymbol>{props.symbol}</CoinSymbol>
       )}

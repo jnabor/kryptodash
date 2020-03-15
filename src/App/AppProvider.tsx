@@ -31,7 +31,7 @@ export const appContext = React.createContext<AppProviderState>({
   page: '',
   favorites: [],
   prices: [],
-  timeInterval: 'months',
+  timeInterval: 'weeks',
   filteredCoins: [],
   currentFavorite: '',
   historical: [],
@@ -56,7 +56,7 @@ export class AppProvider extends React.Component<
   constructor(props: AppProviderProps) {
     super(props)
     this.state = {
-      page: 'dashboard',
+      page: 'settings',
       favorites: [
         'BTC',
         'ETH',
@@ -71,10 +71,10 @@ export class AppProvider extends React.Component<
         'LEO',
         'XLM'
       ],
-      currentFavorite: '',
+      currentFavorite: 'BTC',
       historical: [],
       prices: [],
-      timeInterval: 'months',
+      timeInterval: 'weeks',
       filteredCoins: [],
       ...this.savedSettings(),
       confirmFavorites: this.confirmFavorites,

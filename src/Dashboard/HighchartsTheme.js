@@ -1,14 +1,5 @@
 export default {
-  colors: [
-    '#61d936',
-    '#552ccb',
-    '#1163c9',
-    '#04a1ee',
-    '#08c6e0',
-    '#146b9e',
-    '#f376c1',
-    '#1b2839'
-  ],
+  colors: ['#FFA000'],
   chart: {
     backgroundColor: '#ffffff',
     className: 'dark-container',
@@ -102,7 +93,9 @@ export default {
     }
   },
   legend: {
+    enabled: false,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+
     itemStyle: {
       font: '9pt Trebuchet MS, Verdana, sans-serif',
       color: '#A0A0A0'

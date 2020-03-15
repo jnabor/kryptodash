@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      padding: '2px 4px',
+      padding: '4px 6px',
       display: 'flex',
       alignItems: 'center',
       width: 400
@@ -36,18 +36,18 @@ const SearchBar: React.SFC<SearchBarProps> = ({ search }) => {
 
   return (
     <Paper className={classes.root}>
-      <InputBase
-        onChange={e => search(e)}
-        className={classes.input}
-        placeholder='Search Coins'
-        inputProps={{ 'aria-label': 'Search Coins' }}
-      />
       <IconButton
         type='submit'
         className={classes.iconButton}
         aria-label='search'>
         <SearchIcon />
       </IconButton>
+      <InputBase
+        onChange={e => search(e)}
+        className={classes.input}
+        placeholder='Search Coins'
+        inputProps={{ 'aria-label': 'Search Coins' }}
+      />
     </Paper>
   )
 }

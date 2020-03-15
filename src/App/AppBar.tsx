@@ -6,11 +6,10 @@ import Button from '@material-ui/core/Button'
 import SettingsIcon from '@material-ui/icons/Settings'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import Hidden from '@material-ui/core/Hidden'
-import IconButton from '@material-ui/core/IconButton'
 
 const Bar = styled.div`
   display: grid;
-  grid-template-columns: 180px auto 350px;
+  grid-template-columns: 190px auto;
   justify-items: right;
 `
 
@@ -43,10 +42,11 @@ const ControlButton: React.SFC<ControlButtonProps> = props => {
   const context = useContext(appContext)
 
   const variant = context.page === props.name ? 'contained' : 'outlined'
-
+  const disabled = context.firstVisit && props.name === 'dashboard'
   return (
     <>
       <ControlButtonElem
+        disabled={disabled}
         onClick={() => context.setPage(props.name)}
         variant={variant}
         color='primary'
@@ -70,7 +70,6 @@ const AppBar: React.SFC<AppBarProps> = () => {
       <div>
         <Typography variant='h4'> KRYPTODASH</Typography>
       </div>
-      <div></div>
       <div>
         <ControlButton name='dashboard' />
         <ControlButton name='settings' />

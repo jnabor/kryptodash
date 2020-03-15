@@ -8,7 +8,7 @@ export const CoinGridStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   grid-gap: 15px;
-  margin-top: 60px;
+  margin-top: 40px;
 `
 
 export interface CoinGridProps {

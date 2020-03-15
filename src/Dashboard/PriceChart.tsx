@@ -17,7 +17,7 @@ const PriceChart: React.SFC<PriceChartProps> = () => {
       {({ historical, changeChartSelect }) => (
         <Tile>
           <ChartSelect
-            defaultValue={'months'}
+            defaultValue={'weeks'}
             onChange={e => {
               changeChartSelect(e.target.value)
             }}>

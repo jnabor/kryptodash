@@ -10,7 +10,7 @@ import SearchBar from './SearchBar'
 export interface SearchProps {}
 
 const CenterDiv = styled.div`
-  margin-top: 40px;
+  margin: 40px;
   display: grid;
   justify-content: center;
 `
@@ -63,13 +63,7 @@ const Search: React.SFC<SearchProps> = () => {
     <appContext.Consumer>
       {({ setFilteredCoins, coinList }) => (
         <CenterDiv>
-          <div></div>
-          <div>
-            <SearchBar
-              search={e => filterCoins(e, setFilteredCoins, coinList)}
-            />
-          </div>
-          <div></div>
+          <SearchBar search={e => filterCoins(e, setFilteredCoins, coinList)} />
         </CenterDiv>
       )}
     </appContext.Consumer>
