@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "repository": "git@github.com:sonabstudios/kryptodash.git",
+  "homepage": "https://jnabor.github.io/kryptodash/",
   "dependencies": {
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.0",
