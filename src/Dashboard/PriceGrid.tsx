@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { appContext } from '../App/AppProvider'
 import styled from 'styled-components'
 import PriceTile from './PriceTile'
@@ -12,16 +12,14 @@ const PriceGridStyled = styled.div`
 export interface PriceGridProps {}
 
 const PriceGrid: React.SFC<PriceGridProps> = () => {
+  const context = useContext(appContext)
+
   return (
-    <appContext.Consumer>
-      {({ prices }) => (
-        <PriceGridStyled>
-          {prices.map((price, index) => (
-            <PriceTile key={index} price={price} index={index} />
-          ))}
-        </PriceGridStyled>
-      )}
-    </appContext.Consumer>
+    <PriceGridStyled>
+      {context.prices.map((price, index) => (
+        <PriceTile key={index} price={price} index={index} />
+      ))}
+    </PriceGridStyled>
   )
 }
 

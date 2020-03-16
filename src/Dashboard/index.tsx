@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Page from '../Shared/Page'
 import PriceGrid from './PriceGrid'
@@ -16,11 +16,9 @@ const ChartGrid = styled.div`
 interface ChartProps {}
 
 const Chart: React.SFC<ChartProps> = () => {
-  return (
-    <appContext.Consumer>
-      {({ prices }) => (prices.length > 0 ? <PriceCharts /> : null)}
-    </appContext.Consumer>
-  )
+  const context = useContext(appContext)
+
+  return <>{context.prices.length > 0 ? <PriceCharts /> : null}</>
 }
 
 export interface SpotlightProps {}

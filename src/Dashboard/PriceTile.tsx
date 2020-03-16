@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { SelectableTile } from '../Shared/Tile'
 import { fontSize3, fontSizeBig, greenBoxShadow } from '../Shared/Styles'
@@ -40,22 +40,24 @@ export interface PriceTileStyledProps {
 }
 
 const PriceTileStyled = styled(SelectableTile)<PriceTileStyledProps>`
-  ${props =>
-    props.compact &&
-    css`
-      display: grid;
-      ${fontSize3}
-      grid-gap: 5px;
-      grid-template-columns: repeat(3, 1fr);
-      justify-items: right;
-    `}
+  && {
+    ${props =>
+      props.compact &&
+      css`
+        display: grid;
+        ${fontSize3}
+        grid-gap: 5px;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: right;
+      `}
 
-  ${props =>
-    props.currentFavorite &&
-    css`
-      ${greenBoxShadow}
-      pointer-events: none;
-    `}
+    ${props =>
+      props.currentFavorite &&
+      css`
+        ${greenBoxShadow}
+        pointer-events: none;
+      `}
+  }
 `
 
 export interface ChangePercentProps {
@@ -129,20 +131,20 @@ export interface PriceTileProps {
 }
 
 const PriceTile: React.SFC<PriceTileProps> = ({ price, index }) => {
-  let sym = Object.keys(price)[0]
-  let data = price[sym]['USD']
-  let TileClass = index < 5 ? PriceTileGrid : PriceTileCompact
+  const context = useContext(appContext)
+
+  const sym = Object.keys(price)[0]
+  const data = price[sym]['USD']
+  const TileClass = index < 5 ? PriceTileGrid : PriceTileCompact
+  const favorite: boolean = context.currentFavorite === sym
+
   return (
-    <appContext.Consumer>
-      {({ currentFavorite, setCurrentFavorite }) => (
-        <TileClass
-          sym={sym}
-          data={data}
-          currentFavorite={currentFavorite === sym}
-          setCurrentFavorite={e => setCurrentFavorite(sym)}
-        />
-      )}
-    </appContext.Consumer>
+    <TileClass
+      sym={sym}
+      data={data}
+      currentFavorite={favorite}
+      setCurrentFavorite={e => context.setCurrentFavorite(sym)}
+    />
   )
 }
 

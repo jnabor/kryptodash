@@ -3,7 +3,7 @@ import _ from 'lodash'
 import moment from 'moment'
 
 const cc = require('cryptocompare')
-//cc.setApiKey('<put your api key here>')
+cc.setApiKey(process.env.REACT_APP_CRYPTOCOMPARE_API_KEY)
 
 export interface AppProviderProps {}
 
@@ -33,7 +33,7 @@ export const appContext = React.createContext<AppProviderState>({
   prices: [],
   timeInterval: 'weeks',
   filteredCoins: [],
-  currentFavorite: '',
+  currentFavorite: 'BTC',
   historical: [],
   confirmFavorites: () => {},
   firstVisit: false,
@@ -124,7 +124,10 @@ export class AppProvider extends React.Component<
   }
 
   fetchHistorical = async () => {
-    if (this.state.firstVisit) return
+    if (this.state.firstVisit) {
+      console.log('first visit', this.state.firstVisit)
+      return
+    }
     let results = await this.historical()
     let historical = [
       {

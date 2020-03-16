@@ -1,39 +1,29 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import highchartsConfig from './HighchartsConfig'
 import highchartsTheme from './HighchartsTheme'
 
 import { Tile } from '../Shared/Tile'
 import { appContext } from '../App/AppProvider'
 import ReactHighcharts from 'react-highcharts'
-import ChartSelect from './ChartSelect'
+import SelectCharts from './SelectChart'
 
 ReactHighcharts.Highcharts.setOptions(highchartsTheme)
 
 export interface PriceChartProps {}
 
 const PriceChart: React.SFC<PriceChartProps> = () => {
+  const context = useContext(appContext)
+  const config = highchartsConfig(context.historical)
+
   return (
-    <appContext.Consumer>
-      {({ historical, changeChartSelect }) => (
-        <Tile>
-          <ChartSelect
-            defaultValue={'weeks'}
-            onChange={e => {
-              changeChartSelect(e.target.value)
-            }}>
-            <option value='days'>Days</option>
-            <option value='weeks'>Weeks</option>
-            <option value='months'>Months</option>
-          </ChartSelect>
-          {historical.length ? (
-            <ReactHighcharts
-              config={highchartsConfig(historical)}></ReactHighcharts>
-          ) : (
-            <div> Loading Historical Data ...</div>
-          )}
-        </Tile>
+    <Tile>
+      <SelectCharts />
+      {context.historical.length ? (
+        <ReactHighcharts config={config}></ReactHighcharts>
+      ) : (
+        <div style={{ margin: '20px' }}> Loading Historical Data ...</div>
       )}
-    </appContext.Consumer>
+    </Tile>
   )
 }
 
