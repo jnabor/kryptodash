@@ -15,6 +15,6 @@
 - moment
 - highcharts
 
-see demo: https://jnabor.github.io/kryptodash/
+see demo: https://jaysonnabor.github.io/kryptodash/
 
 ![Preview](kryptodash.jpg)
