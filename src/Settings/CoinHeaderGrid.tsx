@@ -18,9 +18,7 @@ export const CoinSymbol = styled.div`
 `
 export const DeleteIcon = styled.div`
   justify-self: right;
-  display: none;
   ${DeletableTile}: hover & {
-    display: block;
     color: red;
   }
 `
@@ -31,7 +29,7 @@ export interface CoinHeaderGridProps {
   topSection: boolean
 }
 
-const CoinHeaderGrid: React.SFC<CoinHeaderGridProps> = props => {
+const CoinHeaderGrid: React.SFC<CoinHeaderGridProps> = (props) => {
   return (
     <CoinHeaderGridStyled>
       <CoinName>{props.name}</CoinName>

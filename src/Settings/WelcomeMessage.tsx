@@ -9,10 +9,20 @@ const WelcomeMessage: React.SFC<WelcomeMessageProps> = () => {
     <appContext.Consumer>
       {({ firstVisit }) =>
         firstVisit ? (
-          <Typography variant='h6'>
+          <Typography
+            variant='h6'
+            component='div'
+            style={{ textAlign: 'center' }}>
             Welcome to Kryptodash, please select your favorite coins!
           </Typography>
-        ) : null
+        ) : (
+          <Typography
+            variant='h6'
+            component='div'
+            style={{ textAlign: 'center' }}>
+            Favorites
+          </Typography>
+        )
       }
     </appContext.Consumer>
   )

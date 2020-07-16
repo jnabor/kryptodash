@@ -4,6 +4,9 @@ import Page from '../Shared/Page'
 import PriceGrid from './PriceGrid'
 import CoinSpotlight from './CoinSpotlight'
 import PriceCharts from './PriceChart'
+import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
+
 import { appContext } from '../App/AppProvider'
 
 const ChartGrid = styled.div`
@@ -26,7 +29,16 @@ export interface SpotlightProps {}
 const Spotlight: React.SFC<SpotlightProps> = () => {
   return (
     <appContext.Consumer>
-      {({ prices }) => (prices.length > 0 ? <CoinSpotlight /> : null)}
+      {({ prices }) =>
+        prices.length > 0 ? (
+          <CoinSpotlight />
+        ) : (
+          <Typography variant='h6'>
+            {' '}
+            Loading Prices <CircularProgress size={22} />
+          </Typography>
+        )
+      }
     </appContext.Consumer>
   )
 }
