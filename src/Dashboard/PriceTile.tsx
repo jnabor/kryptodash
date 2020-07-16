@@ -23,7 +23,7 @@ export interface ChangePctProps {
 
 const ChangePct = styled.div<ChangePctProps>`
   color: green;
-  ${props =>
+  ${(props) =>
     props.red &&
     css`
       color: red;
@@ -41,7 +41,7 @@ export interface PriceTileStyledProps {
 
 const PriceTileStyled = styled(SelectableTile)<PriceTileStyledProps>`
   && {
-    ${props =>
+    ${(props) =>
       props.compact &&
       css`
         display: grid;
@@ -51,7 +51,7 @@ const PriceTileStyled = styled(SelectableTile)<PriceTileStyledProps>`
         justify-items: right;
       `}
 
-    ${props =>
+    ${(props) =>
       props.currentFavorite &&
       css`
         ${greenBoxShadow}
@@ -85,7 +85,7 @@ const PriceTileGrid: React.SFC<PriceTileGridProps> = ({
   sym,
   data,
   currentFavorite,
-  setCurrentFavorite
+  setCurrentFavorite,
 }) => {
   return (
     <PriceTileStyled
@@ -111,7 +111,7 @@ const PriceTileCompact: React.SFC<PriceTileCompactProps> = ({
   sym,
   data,
   currentFavorite,
-  setCurrentFavorite
+  setCurrentFavorite,
 }) => {
   return (
     <PriceTileStyled
@@ -143,7 +143,7 @@ const PriceTile: React.SFC<PriceTileProps> = ({ price, index }) => {
       sym={sym}
       data={data}
       currentFavorite={favorite}
-      setCurrentFavorite={e => context.setCurrentFavorite(sym)}
+      setCurrentFavorite={(e) => context.setCurrentFavorite(sym)}
     />
   )
 }

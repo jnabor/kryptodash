@@ -2,9 +2,8 @@
   "name": "kryptodash",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://sonabstudios.github.io/kryptodash",
-  "repository": "git@github.com:sonabstudios/kryptodash.git",
   "homepage": "https://jnabor.github.io/kryptodash/",
+  "repository": "git@github.com:sonabstudios/kryptodash.git",
   "dependencies": {
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.0",

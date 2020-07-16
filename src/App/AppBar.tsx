@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled, { css } from 'styled-components'
-import { appContext, AppProviderProps } from './AppProvider'
+import { appContext } from './AppProvider'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import SettingsIcon from '@material-ui/icons/Settings'
@@ -24,8 +24,8 @@ const ControlButtonElem = styled(({ ...props }) => <Button {...props} />)<
   && {
     cursor: pointer;
     margin-left: 20px;
-    ${props => props.active && css``}
-    ${props => props.show && css``};
+    ${(props) => props.active && css``}
+    ${(props) => props.show && css``};
   }
 `
 
@@ -38,7 +38,7 @@ interface ControlButtonProps {
   active?: boolean
 }
 
-const ControlButton: React.SFC<ControlButtonProps> = props => {
+const ControlButton: React.SFC<ControlButtonProps> = (props) => {
   const context = useContext(appContext)
 
   const variant = context.page === props.name ? 'contained' : 'outlined'

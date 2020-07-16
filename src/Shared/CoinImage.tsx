@@ -7,7 +7,7 @@ interface CoinImageStyledProps {
 
 const CoinImageStyled = styled.img<CoinImageStyledProps>`
   height: 50px;
-  ${props =>
+  ${(props) =>
     props.spotlight &&
     css`
       height: 200px;
@@ -26,7 +26,7 @@ const CoinImage: React.SFC<CoinImageProps> = ({ coin, spotlight }) => {
     <CoinImageStyled
       spotlight={spotlight}
       alt={coin.CoinSymbol}
-      src={`http://cryptocompare.com/${coin.ImageUrl}`}
+      src={`https://cryptocompare.com/${coin.ImageUrl}`}
     />
   )
 }
