@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/kryptodash/static/js/main.14e286ea.chunk.js",
-    "main.js.map": "/kryptodash/static/js/main.14e286ea.chunk.js.map",
+    "main.js": "/kryptodash/static/js/main.cfbfee60.chunk.js",
+    "main.js.map": "/kryptodash/static/js/main.cfbfee60.chunk.js.map",
     "runtime-main.js": "/kryptodash/static/js/runtime-main.25aed29c.js",
     "runtime-main.js.map": "/kryptodash/static/js/runtime-main.25aed29c.js.map",
     "static/js/2.656568d6.chunk.js": "/kryptodash/static/js/2.656568d6.chunk.js",
     "static/js/2.656568d6.chunk.js.map": "/kryptodash/static/js/2.656568d6.chunk.js.map",
     "index.html": "/kryptodash/index.html",
-    "precache-manifest.a259f479b7e34df6b5305e07443813f4.js": "/kryptodash/precache-manifest.a259f479b7e34df6b5305e07443813f4.js",
+    "precache-manifest.cbe49be647cc1ad9323a76cdd026bc2f.js": "/kryptodash/precache-manifest.cbe49be647cc1ad9323a76cdd026bc2f.js",
     "service-worker.js": "/kryptodash/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.25aed29c.js",
     "static/js/2.656568d6.chunk.js",
-    "static/js/main.14e286ea.chunk.js"
+    "static/js/main.cfbfee60.chunk.js"
   ]
 }
