@@ -16,7 +16,7 @@ const PriceChart: React.SFC<PriceChartProps> = () => {
   const config = highchartsConfig(context.historical)
 
   return (
-    <Tile>
+    <div>
       <SelectCharts />
       {context.historical.length ? (
         <ReactHighcharts config={config}></ReactHighcharts>
@@ -25,7 +25,7 @@ const PriceChart: React.SFC<PriceChartProps> = () => {
           Loading Historical Data <CircularProgress size={22} />
         </div>
       )}
-    </Tile>
+    </div>
   )
 }
 

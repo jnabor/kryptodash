@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Tile } from '../Shared/Tile'
 import { appContext } from '../App/AppProvider'
 import { fontSizeBig } from '../Shared/Styles'
 import CoinImage from '../Shared/CoinImage'
@@ -10,6 +9,11 @@ const SpotlightName = styled.div`
   ${fontSizeBig};
   margin-bottom: 20px;
   margin-top: 20px;
+`
+export const Tile = styled.div`
+  && {
+    padding: 10px;
+  }
 `
 
 export interface CoinSpotlightProps {}
