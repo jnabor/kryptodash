@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dea5e52f95912a097b4663448438d18f",
+    "revision": "27999f1bb456217161c8366e41be0868",
     "url": "/kryptodash/index.html"
   },
   {
